@@ -1,4 +1,4 @@
-# CI de Nível 02 - Disparo agendado
+# CI de Nível 02 - Disparo agendado 
 
 # nome do nosso 'pipeline'
 name: 'Execução Agendada'
