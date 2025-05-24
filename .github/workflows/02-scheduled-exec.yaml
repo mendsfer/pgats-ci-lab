@@ -7,14 +7,15 @@ name: 'Execução Manual'
 # gatilho execução manual = workflow_dispatch
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 6 * * 1'
 
 # trabalhos/tarefas dentro do pipeline = jobs
 jobs:
   e2e-tests:
 
     #maquina que o job vai executar
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     # passos do script de build
     steps:
@@ -23,8 +24,8 @@ jobs:
 
       # instalação do node
       - uses: actions/setup-node@v4
-          with:
-            node-version: 22.x
+        with:
+          node-version: 22.x
 
       #instalação do yarn
       - name: Instalando yarn
@@ -40,5 +41,4 @@ jobs:
 
       # executar os e2e
       - name: Executando Testes E2E
-      - run: yarn run e2e
-      
+        run: yarn run e2e
