@@ -32,6 +32,7 @@ jobs:
 
   unidade:
     runs-on: ubuntu-22.04
+    needs: [inspecao]
 
     steps:
       # clone do projeto
@@ -55,6 +56,7 @@ jobs:
 
   e2e-tests:
     runs-on: ubuntu-22.04
+    needs: [inspecao]
 
     steps:
       # clone do projeto
@@ -89,6 +91,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-22.04
+    needs: [e2e-tests]
 
     steps:
       - uses: actions/checkout@v4
