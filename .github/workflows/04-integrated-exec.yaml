@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout#v4
       
       # instalação do node
-      - user: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: latest
 
@@ -37,7 +37,7 @@ jobs:
       - uses: actions/checkout#v4
 
       # instalação do node
-      - user: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: latest
 
