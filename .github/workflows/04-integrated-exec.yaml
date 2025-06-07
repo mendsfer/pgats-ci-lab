@@ -13,7 +13,7 @@ jobs:
     steps:
       # clone do projeto
       - uses: actions/checkout@v4
-      
+
       # instalação do node
       - uses: actions/setup-node@v4
         with:
@@ -26,7 +26,7 @@ jobs:
       # instalação das dependências
       - name: Instalando dependências
         run: yarn
-      
+
       - name: Checando padronização do código
         run: yarn lint
 
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-       # clone do projeto
+      # clone do projeto
       - uses: actions/checkout@v4
 
       # instalação do node
@@ -49,7 +49,7 @@ jobs:
       # instalação das dependências
       - name: Instalando dependências
         run: yarn
-      
+
       - name: Executando testes de unidade
         run: yarn test
 
@@ -85,7 +85,7 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           name: relatorio
-          path: ./playwright-report   
+          path: ./playwright-report
 
   deploy:
     runs-on: ubuntu-22.04
