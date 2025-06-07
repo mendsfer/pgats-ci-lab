@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-       # clone do projeto
+      # clone do projeto
       - uses: actions/checkout#v4
       
       # instalação do node
@@ -80,9 +80,7 @@ jobs:
       - name: Executando Testes E2E
         run: yarn run e2e
 
-      # upload do relatório de testes
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: relatorio
