@@ -91,7 +91,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-22.04
-    needs: [e2e-tests]
+    needs: [e2e-tests, unidade]
 
     steps:
       - uses: actions/checkout@v4
