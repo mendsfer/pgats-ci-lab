@@ -1,0 +1,98 @@
+# CI de Nível 04 - Disparo dos testes dentro do pipe de dev
+
+name: 'Execução Integrada'
+
+on:
+  workflow_dispatch
+
+jobs:
+  inspecao:
+    runs-on: ubuntu-22.04
+
+    steps:
+       # clone do projeto
+      - uses: actions/checkout#v4
+      
+      # instalação do node
+      - user: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      #instalação do yarn
+      - name: Instalando yarn
+        run: npm install -g yarn
+
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
+      
+      - name: Checando padronização do código
+        run: yarn lint
+
+  unidade:
+    runs-on: ubuntu-22.04
+
+    steps:
+       # clone do projeto
+      - uses: actions/checkout#v4
+
+      # instalação do node
+      - user: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      #instalação do yarn
+      - name: Instalando yarn
+        run: npm install -g yarn
+
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
+      
+      - name: Executando testes de unidade
+        run: yarn test
+
+  e2e-tests:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # clone do projeto
+      - uses: actions/checkout#v4
+
+      # instalação do node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      #instalação do yarn
+      - name: Instalando yarn
+        run: npm install -g yarn
+
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
+
+      # instalação do Playwright
+      - name: Instalando Playwright
+        run: yarn playwright install
+
+      # executar os testes e2e
+      - name: Executando Testes E2E
+        run: yarn run e2e
+
+      # upload do relatório de testes
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio
+          path: ./playwright-report   
+
+  deploy:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Simulação do Deploy
+        run: echo "simulando o deploy com sucesso"
