@@ -12,7 +12,7 @@ jobs:
 
     steps:
       # clone do projeto
-      - uses: actions/checkout#v4
+      - uses: actions/checkout@v4
       
       # instalação do node
       - uses: actions/setup-node@v4
@@ -35,7 +35,7 @@ jobs:
 
     steps:
        # clone do projeto
-      - uses: actions/checkout#v4
+      - uses: actions/checkout@v4
 
       # instalação do node
       - uses: actions/setup-node@v4
@@ -58,7 +58,7 @@ jobs:
 
     steps:
       # clone do projeto
-      - uses: actions/checkout#v4
+      - uses: actions/checkout@v4
 
       # instalação do node
       - uses: actions/setup-node@v4
